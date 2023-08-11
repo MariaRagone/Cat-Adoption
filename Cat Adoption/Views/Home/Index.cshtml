@@ -1,8 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Cat>
+<h1>Welcome to the cat adoption center.</h1>
+<form asp-method="post" asp-action="Results">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+ <p><h4>Select a breed.</h4> </p>
+    <select name="Breed">
+        <option value="Domestic Longhair">Domestic Longhair</option>
+        <option value="Domestic Shorthair">Domestic Shorthair</option>
+        <option value="Domestic Hairless">Domestic Hairless</option>
+    </select>
+
+    <p></p>
+    <input type="submit" />
+</form>

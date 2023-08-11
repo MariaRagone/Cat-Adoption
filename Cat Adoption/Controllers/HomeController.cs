@@ -24,6 +24,24 @@ namespace Cat_Adoption.Controllers
         {
             return View();
         }
+        public IActionResult Results(string Breed)
+        {
+            List<Cat> p = _AdoptionDbContext.Cats.Where(x => x.Breed == Breed).ToList();
+            //gets the post with the matching id and returns it to the view
+
+            return View(p);
+        }
+        public IActionResult RemoveAnimal(int id)
+        {
+            Cat a = _AdoptionDbContext.Cats.FirstOrDefault(x => x.Id == id);
+            _AdoptionDbContext.Cats.Remove(a);
+            _AdoptionDbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

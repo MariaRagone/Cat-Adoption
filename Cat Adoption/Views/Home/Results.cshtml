@@ -1,0 +1,54 @@
+﻿@model List<Cat>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    //<h3>@Model.Breed</h3>
+    <ul>
+        @{
+            if (Model != null)
+            {
+                //List<Cat> DistinctBreeds = Model.FirstOrDefault(c => c.Breed == breed).ToList();
+                //Is FirstOrDefault for showing individual objects (like titles, etc. when calling in List<Class>?
+                //pass in breed from form
+                //create a list of only cats of that breed
+                //run linq method on list?
+                foreach (Cat c in Model)
+                {
+                    <h2>@c.Name</h2>
+                    <img width="200px" src="@c.Img" />
+                    <p>@c.Description</p>
+                    if (c.Age <= 1)
+                    {
+                        <p>@c.Age year old</p>
+                    }
+                    else
+                    {
+                        
+                        <p>@c.Age years old</p>
+                    }
+                    if (c.Fixed == true)
+                    {
+                        <p>This cat is fixed!</p>
+                    }
+                    else
+                    {
+                        <p>This cat is not fixed!</p>
+                    }
+
+                    <form asp-method="post" asp-action="RemoveAnimal" asp-route-id="c.Id" id="form1">
+
+                        <button type="submit" form="form1" value="Submit">Adopt me!</button>
+
+                    </form>
+                }
+
+            }
+            else
+            {
+                <h1>Product not found</h1>
+            }
+        }
+    </ul>
+}
