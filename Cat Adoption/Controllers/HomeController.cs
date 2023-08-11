@@ -1,5 +1,6 @@
 ﻿using Cat_Adoption.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 
 namespace Cat_Adoption.Controllers
@@ -7,7 +8,7 @@ namespace Cat_Adoption.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private AdoptionDbContext _AdoptionDbContext = new AdoptionDbContext();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -15,7 +16,8 @@ namespace Cat_Adoption.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Cat> result = _AdoptionDbContext.Cats.ToList();
+            return View(result);
         }
 
         public IActionResult Privacy()
