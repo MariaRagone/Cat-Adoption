@@ -31,7 +31,7 @@
                         <p>This cat is not fixed!</p>
                         }
                         <a asp-action="adopt" asp-route-id="@c.Id">Adopt @c.Name</a>
-                    <form asp-method="post" asp-action="Adoption" asp-route-id="@c.Id">
+                    <form asp-method="post" asp-action="adopt" asp-route-id="@c.Id">
                         <button type="submit">Adopt Me</button>
                     </form>
                 }
