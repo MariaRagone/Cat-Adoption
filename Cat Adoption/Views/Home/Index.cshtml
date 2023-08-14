@@ -1,13 +1,20 @@
-﻿@model List<Cat>
+﻿@model List<string>
 <h1>Welcome to the cat adoption center.</h1>
 <form asp-method="post" asp-action="Results">
 
  <p><h4>Select a breed.</h4> </p>
     <select name="Breed">
-        <option value="Domestic Longhair">Domestic Longhair</option>
+    @{
+        foreach(string b in Model)
+        {
+            
+        <option value ="@b">@b</option>
+        }
+ }
+@*        <option value="Domestic Longhair">Domestic Longhair</option>
         <option value="Domestic Shorthair">Domestic Shorthair</option>
         <option value="Domestic Hairless">Domestic Hairless</option>
-    </select>
+*@    </select>
 
     <p></p>
     <input type="submit" />

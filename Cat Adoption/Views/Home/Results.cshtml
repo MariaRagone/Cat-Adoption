@@ -1,7 +1,4 @@
 ﻿@model List<Cat>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
 
     //<h3>@Model.Breed</h3>
@@ -16,31 +13,26 @@
                 //run linq method on list?
                 foreach (Cat c in Model)
                 {
-                    <h2>@c.Name</h2>
-                    <img width="200px" src="@c.Img" />
-                    <p>@c.Description</p>
-                    if (c.Age <= 1)
-                    {
-                        <p>@c.Age year old</p>
-                    }
-                    else
-                    {
+                    <div>
+
+                        <h2>@c.Name</h2>
+                        <p>
+                        <img width="200px" src="@c.Img" />
+                        <p>@c.Description</p>
+                        <p>Age: @c.Age year old</p>
                         
-                        <p>@c.Age years old</p>
-                    }
-                    if (c.Fixed == true)
-                    {
+                    </div>
+                        if (c.Fixed == true)
+                        {
                         <p>This cat is fixed!</p>
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         <p>This cat is not fixed!</p>
-                    }
-
-                    <form asp-method="post" asp-action="RemoveAnimal" asp-route-id="c.Id" id="form1">
-
-                        <button type="submit" form="form1" value="Submit">Adopt me!</button>
-
+                        }
+                        <a asp-action="adopt" asp-route-id="@c.Id">Adopt @c.Name</a>
+                    <form asp-method="post" asp-action="Adoption" asp-route-id="@c.Id">
+                        <button type="submit">Adopt Me</button>
                     </form>
                 }
 
